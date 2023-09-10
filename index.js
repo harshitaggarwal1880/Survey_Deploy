@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const { db } = require("./connect.js")
 
 const mysql = require("mysql");
 
@@ -19,6 +20,16 @@ app.use(express.static(path.join(__dirname, "./build")));
 app.use("/survey", surveyRoutes);
 app.use("/results", resultsRoutes);
 
+app.get("/trial", (req, res) => {
+  const q = 'INSERT INTO name(`roll`) VALUES ("Hello")';
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    console.log("Success");
+    // return res.status(200).json("Sociodemographic Survey has been sent succesfully");
+  });
+  res.send(" Hello");
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./build/index.html"));
@@ -28,28 +39,5 @@ app.listen(8800, () => {
   console.log("Connected to server!");
 });
 
-// const db = mysql.createConnection({
-//   host: process.env.HOST,
-//   user: process.env.USER,
-//   password: process.env.PASSWORD,
-//   database: process.env.DATABASE,
-// });
 
-// app.get("/", (req, res) => {
-//   const q = 'INSERT INTO name(`roll`) VALUES ("Hello")';
 
-//   db.query(q, (err, data) => {
-//     if (err) return res.status(500).json(err);
-//     console.log("Success");
-//     // return res.status(200).json("Sociodemographic Survey has been sent succesfully");
-//   });
-//   res.send(" Hello");
-// });
-
-// db.connect((err) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("db connect successfully");
-//   }
-// });

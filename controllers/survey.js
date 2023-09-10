@@ -1,6 +1,7 @@
 const { db } = require("../connect.js");
 
 module.exports.addSociodemographic = (req, res) => {
+  console.log("Hello");
   const q =
     "INSERT INTO survey_sociodemographic (`idCode`, `age`, `gender`, `education`, `district`, `date`) VALUES (?)";
 
