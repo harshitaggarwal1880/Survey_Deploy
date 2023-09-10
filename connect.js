@@ -10,10 +10,10 @@ require("dotenv").config();
 // });
 
 var db_config = {
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  host: 'bvzpw4dd1ozdssmcuwu8-mysql.services.clever-cloud.com',
+  user: 'ue23nr2wwj2ddvy4',
+  password: 'h0AjrSZQMZBDMNusraLs',
+  database: "bvzpw4dd1ozdssmcuwu8",
 };
 
 var db;
